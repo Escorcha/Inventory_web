@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3 class="mb-4">Historial de Movimientos</h3>
+
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for mov in movements %}
+                <tr>
+                    <td>
+                        {% if mov[0] == 'purchase' %}
+                            <span class="badge bg-success">Compra</span>
+                        {% else %}
+                            <span class="badge bg-warning">Venta</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ mov[1] }}</td>
+                    <td>{{ mov[2] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/" class="btn btn-secondary">Volver</a>
+
+    </div>
+</div>
+
+{% endblock %}
